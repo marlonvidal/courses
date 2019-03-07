@@ -1,0 +1,165 @@
+// --- Directions
+// Implement classes Node and Linked Lists
+// See 'directions' document
+
+class Node {
+  constructor(data, next = null) {
+    this.data = data;
+    this.next = next;
+  }
+}
+
+class LinkedList {
+  constructor() {
+    this.head = null;
+  }
+
+  insertFirst(data) {
+    this.head = new Node(data, this.head);
+  }
+
+  size() {
+    let count = 0;
+    let node = this.head;
+    while (node) {
+      count++;
+      node = node.next;
+    }
+
+    return count;
+  }
+
+  getFirst() {
+    return this.head;
+  }
+
+  getLast() {
+    let node = this.head;
+    while (node) {
+      if (node.next) {
+        node = node.next;
+      }
+    }
+
+    return node;
+  }
+
+  clear() {
+    this.head = null;
+  }
+
+  removeFirst() {
+    if (!this.head) {
+      return null;
+    }
+
+    this.head = this.head.next;
+  }
+
+  removeLast() {
+    if (!this.head) {
+      return;
+    }
+
+    if (!this.head.next) {
+      this.head = null;
+      return;
+    }
+
+    let previous = this.head;
+    let node = this.head.next;
+
+    while (node.next) {
+      previous = node;
+      node = node.next;
+    }
+
+    previous.next = null;
+  }
+
+  insertLast(data) {
+    let node = getLast();
+
+    if (node) {
+      node.next = new Node(data);
+    } else {
+      this.head = new Node(data);
+    }
+  }
+
+  getAt(index) {
+    let counter = 0;
+    let node = this.head;
+
+    while (node) {
+      if (counter === index) {
+        return node;
+      }
+      node = node.next;
+      counter++;
+    }
+
+    return null;
+  }
+
+  removeAt(index) {
+    if (!this.head) {
+      return;
+    }
+
+    if (index === 0) {
+      this.head = this.head.next;
+    }
+
+    let previous = getAt(index - 1);
+
+    if (!previous || !previous.next) {
+      return;
+    }
+
+    previous.next = previous.next.next;
+  }
+
+  insertAt(index, data) {
+    if (!head) {
+      this.head = new Node(data);
+      return;
+    }
+
+    if (index === 0) {
+      this.head = new Node(data, this.head);
+      return;
+    }
+
+    let previous = getAt(index - 1) || getLast();
+
+    const node = new Node(previous.next);
+    previous.next = node;
+  }
+
+  foreach(cb) {
+    if (!head) {
+      return;
+    }
+
+    let index = 0;
+    let node = this.head;
+
+    while (node) {
+      cb(node, index);
+      node = node.next;
+      index++;
+    }
+  }
+
+  *[Symbol.iterator]() {
+    let node = this.head;
+    
+    while (node) {
+      yield node;
+      node = node.next;
+    }
+  }
+}
+
+module.exports = { Node, LinkedList };
