@@ -1,7 +1,7 @@
-import commentsReducer from "reducers/comments";
+import { saveCommentReducer } from "reducers/comments";
 import { SAVE_COMMENTS } from "actions/types";
 
-describe("commentsReducer", () => {
+describe("saveCommentReducer", () => {
   it("handles actions of type SAVE_CONTENT", () => {
     const newComment = "new comment";
     const action = {
@@ -9,13 +9,13 @@ describe("commentsReducer", () => {
       payload: newComment
     };
 
-    const newState = commentsReducer([], action);
+    const newState = saveCommentReducer([], action);
 
     expect(newState).toEqual([newComment]);
   });
 
   it("handles action with unknown type", () => {
-    const newState = commentsReducer([], { type: "UNKNOWN_TYPE" });
+    const newState = saveCommentReducer([], { type: "UNKNOWN_TYPE" });
     expect(newState).toEqual([]);
   });
 });

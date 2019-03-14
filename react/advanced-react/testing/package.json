@@ -4,10 +4,12 @@
   "private": true,
   "dependencies": {
     "enzyme-adapter-react-16": "^1.10.0",
+    "moxios": "^0.4.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-redux": "^6.0.1",
-    "react-scripts": "2.1.8"
+    "react-scripts": "2.1.8",
+    "redux-promise": "^0.6.0"
   },
   "scripts": {
     "start": "react-scripts start",

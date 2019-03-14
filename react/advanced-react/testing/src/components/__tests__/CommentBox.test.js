@@ -3,7 +3,7 @@ import { mount } from "enzyme";
 import { CommentBox } from "components/CommentBox";
 
 describe("CommentBox", () => {
-  let wrapped;
+  let wrapped;  
 
   beforeEach(() => {
     wrapped = mount(<CommentBox />);
