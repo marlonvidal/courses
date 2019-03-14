@@ -1,6 +1,6 @@
 import { SAVE_COMMENTS, FETCH_COMMENTS } from "actions/types";
 
-export const saveCommentReducer = (state = [], action) => {
+export const commentReducer = (state = [], action) => {
   switch (action.type) {
     case SAVE_COMMENTS:
       return [...state, action.payload];
