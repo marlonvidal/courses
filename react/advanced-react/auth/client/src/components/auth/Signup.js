@@ -6,7 +6,9 @@ import { signUp } from "../../actions/index";
 
 class Signup extends React.Component {
   onSubmit = formProps => {
-    this.props.signUp(formProps);
+    this.props.signUp(formProps, () => {
+        this.props.history.push('/feature')
+    });
   };
 
   render() {
