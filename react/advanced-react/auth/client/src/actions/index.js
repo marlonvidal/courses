@@ -13,6 +13,8 @@ export const signUp = (formProps, callback) => async dispatch => {
       payload: response.data.token
     });
 
+    localStorage.setItem("token", response.data.token);
+
     callback();
   } catch (err) {
     dispatch({
@@ -20,4 +22,17 @@ export const signUp = (formProps, callback) => async dispatch => {
       payload: response.data.error
     });
   }
+};
+
+export const signIn = (formProps, callback) => async dispatch => {
+
+};
+
+export const signOut = () => {
+  localStorage.removeItem("token");
+
+  return {
+    type: AUTH_USER,
+    payload: ""
+  };
 };
